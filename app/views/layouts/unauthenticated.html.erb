@@ -25,14 +25,8 @@
 
   <body style="background: #d9d9d9;">
     <main class="flex flex-col min-h-screen">
-      <% if notice %>
-        <div class="alert alert-success" data-turbo-temporary><%= notice %></div>
-      <% end %>
-
-      <% if alert %>
-        <div class="alert alert-danger" data-turbo-temporary><%= alert %></div>
-      <% end %>
-      <%= yield %>
+        <%= render 'layouts/navbar' %>
+        <%= yield %>
     </main>
   </body>
 </html>
