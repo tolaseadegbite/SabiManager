@@ -19,7 +19,7 @@ body {
   font-weight: 400;
 }
 
-h1,h2,h3,h4,h5,h6,.logo-text {
+h1,h2,h3,h4,h5,h6,.logo-text,.nav-ul,.nav-btn {
   font-family: "Mona Sans", serif;
   font-weight: 600;
 }
@@ -27,8 +27,4 @@ h1,h2,h3,h4,h5,h6,.logo-text {
 p {
   font-family: "Open Sans", serif;
   font-weight: 400;
-}
-
-a {
-  color: #272727 !important;
 }

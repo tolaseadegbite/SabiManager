@@ -22,11 +22,12 @@
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
-
-  <body style="background: #d9d9d9;">
+  <body>
     <main class="flex flex-col min-h-screen">
-        <%= render 'layouts/navbar' %>
-        <%= yield %>
+      <%= render 'unauthenticated/navbar' %>
+      <%= render 'layouts/flash' %>
+
+      <%= yield %>
     </main>
   </body>
 </html>

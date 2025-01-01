@@ -1,0 +1,5 @@
+<% if notice %>
+  <%= render partial: 'layouts/toast', locals: { message: notice } %>
+<% elsif alert %>
+  <%= render partial: 'layouts/toast', locals: { message: alert } %>
+<% end %>
