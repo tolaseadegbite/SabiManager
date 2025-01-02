@@ -1,7 +1,7 @@
 <% provide(:title, "Verify Account") %>
 
 <div class="flex-grow flex items-center justify-center">
-  <div class="wrapper w-full mx-5 md:w-1/3 md:mx-0 bg-white p-8 rounded-lg shadow-lg">
+  <div class="wrapper w-full mx-5 md:w-1/3 md:mx-0 bg-white p-8 rounded-lg shadow-lg border">
     <div class="flex-1 space-y-4">
       <h1 class="text-xl text-black mb-5">Verify Account</h1>
       <%= form_with url: rodauth.verify_account_resend_path, method: :post, data: { turbo: false }, class: "w-full" do |form| %>
