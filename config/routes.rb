@@ -12,4 +12,6 @@ Rails.application.routes.draw do
   get "/settings/account_information", to: "settings#account_information", as: :account_information_settings
   get "/settings/password", to: "settings#password", as: :password_settings
   get "/settings/email", to: "settings#email", as: :email_settings
+  get "/settings/name", to: "settings#name", as: :name_settings
+  patch "/settings/name", to: "settings#update_name", as: :update_name_settings
 end
