@@ -22,6 +22,10 @@ class SettingsController < ApplicationController
     @profile = current_account.profile
   end
 
+  def deactivate_account
+    
+  end
+
   def update_name
     @profile = current_account.profile
 

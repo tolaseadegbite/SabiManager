@@ -157,7 +157,11 @@ class RodauthMain < Rodauth::Rails::Auth
 
     change_login_route "settings/email"
 
+    close_account_route "settings/deactivate_account"
+
     change_login_button "Submit"
+
+    close_account_button "Deactivate"
 
     change_password_redirect "/settings/account"
 
