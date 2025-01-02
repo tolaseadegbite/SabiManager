@@ -152,5 +152,16 @@ class RodauthMain < Rodauth::Rails::Auth
     create_account_route "signup"
 
     login_route "signin"
+
+    change_password_route "settings/password"
+
+    change_login_route "settings/email"
+
+    change_login_button "Submit"
+
+    change_password_redirect "/settings/account"
+
+    change_login_redirect "/settings/account_information"
+    
   end
 end

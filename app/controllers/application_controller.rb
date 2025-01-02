@@ -24,4 +24,8 @@ class ApplicationController < ActionController::Base
     rodauth.rails_account
   end
   helper_method :current_account # skip if inheriting from ActionController::API
+
+  def authenticate!
+    rodauth.require_account # redirect to login page if not authenticated
+  end
 end
