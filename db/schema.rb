@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_01_03_121511) do
+ActiveRecord::Schema[8.0].define(version: 2025_01_03_144252) do
   create_table "account_login_change_keys", force: :cascade do |t|
     t.string "key", null: false
     t.string "login", null: false
@@ -86,6 +86,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_03_121511) do
     t.string "currency", default: "Naira"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.decimal "tax_rate", precision: 5, scale: 2, default: "0.0"
     t.index ["account_id"], name: "index_businesses_on_account_id"
   end
 
