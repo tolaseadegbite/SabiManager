@@ -21,16 +21,24 @@
             <li class="">
                 <%= link_to name_settings_path, class: "inline-flex justify-between items-center w-full hover:bg-gray-100 px-6 p-2" do %>
 
-                <div>
-                    <p>Name</p>
-                    <p class="text-sm text-gray-600"><%= current_account.profile.name %></p>
-                </div>
+                    <div class="flex items-center gap-2">
+                        <span>
+                            <% if current_account.profile.avatar.attached? %>
+                                <%= image_tag(current_account.profile.avatar, class: "w-14 h-14 object-cover rounded-full border-2 border-white", alt: "profile picture", data: { "profile-edit-form-target": "avatarPreview" }) %>
+                            <% else %>
+                                <%= image_tag('others/default avatar.png', class: "w-14 h-14 object-cover rounded-full border-2 border-white border-gray-800", alt: "profile picture", data: { "profile-edit-form-target": "avatarPreview" }) %>
+                            <% end %>
+                        </span>
+                        <div>
+                            <p><%= current_account.profile.name %></p>
+                        </div>
+                    </div>
 
-                <span>
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
-                    </svg>
-                </span>
+                    <span>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                        </svg>
+                    </span>
                 <% end %>
             </li>
 

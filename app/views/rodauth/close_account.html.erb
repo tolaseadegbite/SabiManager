@@ -21,7 +21,11 @@
               <%= link_to settings_path, class: "inline-flex justify-between items-center w-full hover:bg-gray-100 px-6 p-2" do %>
                 <div class="flex items-center gap-2">
                   <span>
-                    <img class="w-10 h-10 rounded-full" src="https://cdn.pixabay.com/photo/2021/02/27/16/25/woman-6055084_640.jpg" alt="user photo">
+                    <% if current_account.profile.avatar.attached? %>
+                      <%= image_tag(current_account.profile.avatar, class: "w-20 h-20 object-cover rounded-full border-2 border-white", alt: "profile picture", data: { "profile-edit-form-target": "avatarPreview" }) %>
+                    <% else %>
+                      <%= image_tag('others/default avatar.png', class: "w-20 h-20 object-cover rounded-full border-2 border-white border-gray-800", alt: "profile picture", data: { "profile-edit-form-target": "avatarPreview" }) %>
+                    <% end %>
                   </span>
                   <div>
                     <p class="font-semibold"><%= current_account.profile.name %></p>

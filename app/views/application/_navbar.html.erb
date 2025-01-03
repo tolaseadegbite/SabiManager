@@ -32,8 +32,11 @@
         <!-- Avatar -->
         <div class="flex items-center space-x-3 avatar">
             <button type="button" class="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
-                <span class="sr-only">Open user menu</span>
-                <img class="w-8 h-8 rounded-full" src="https://cdn.pixabay.com/photo/2021/02/27/16/25/woman-6055084_640.jpg" alt="user photo">
+                <% if current_account.profile.avatar.attached? %>
+                    <%= image_tag(current_account.profile.avatar, class: "w-8 h-8 object-cover rounded-full", alt: "profile picture", data: { "profile-edit-form-target": "avatarPreview" }) %>
+                <% else %>
+                    <%= image_tag('others/default avatar.png', class: "w-8 h-8 object-cover rounded-full border-gray-800", alt: "profile picture", data: { "profile-edit-form-target": "avatarPreview" }) %>
+                <% end %>
             </button>
             <!-- Dropdown menu -->
             <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600" id="user-dropdown">
