@@ -1,34 +1,27 @@
-<nav class="transparent border-gray-200 dark:bg-gray-900 w-full border-b">
+<nav class="fixed transparent z-20 border-gray-200 dark:bg-gray-900 w-full bg-[#d9d9d9]">
     <div class="max-w-screen-xl flex items-center justify-between mx-auto p-4">
-        <!-- Logo -->
-        <div class="flex items-center space-x-2 logo">
-            <%= link_to root_path, class: "flex items-center space-x-1 rtl:space-x-reverse" do %>
-                <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" class="size-6 border bg-black rounded-lg p-1">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6a7.5 7.5 0 1 0 7.5 7.5h-7.5V6Z" />
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 10.5H21A7.5 7.5 0 0 0 13.5 3v7.5Z" />
+
+        <div class="flex items-center gap-1">
+            <button data-drawer-target="default-sidebar" data-drawer-toggle="default-sidebar" aria-controls="default-sidebar" type="button" class="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
+                <span class="sr-only">Open sidebar</span>
+                <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                    <path clip-rule="evenodd" fill-rule="evenodd" d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"></path>
                 </svg>
-                <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white logo-text">SabiManager</span>
-            <% end %>
+            </button>
+
+            <!-- Logo -->
+            <div class="flex items-center space-x-2 logo">
+                <%= link_to root_path, class: "flex items-center space-x-1 rtl:space-x-reverse" do %>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" class="size-6 border bg-black rounded-lg p-1">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6a7.5 7.5 0 1 0 7.5 7.5h-7.5V6Z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 10.5H21A7.5 7.5 0 0 0 13.5 3v7.5Z" />
+                    </svg>
+                    <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white logo-text">SabiManager</span>
+                <% end %>
+            </div>
         </div>
 
-        <!-- Nav List -->
-        <div class="hidden md:flex flex-grow justify-start ml-10 nav-list">
-            <ul class="flex space-x-8 font-medium">
-                <li>
-                    <a href="#" class="text-gray-900 dark:text-white hover:text-black/50">Features</a>
-                </li>
-                <li>
-                    <a href="#" class="text-gray-900 dark:text-white hover:text-black/50">Blog</a>
-                </li>
-                <li>
-                    <a href="#" class="text-gray-900 dark:text-white hover:text-black/50">Docs</a>
-                </li>
-                <li>
-                    <a href="#" class="text-gray-900 dark:text-white hover:text-black/50">Pricing</a>
-                </li>
-            </ul>
-        </div>
-
+        
         <!-- Avatar -->
         <div class="flex items-center space-x-3 avatar">
             <button type="button" class="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">

@@ -3,11 +3,11 @@ class BusinessesController < ApplicationController
   before_action :find_business, only: %w[show edit update destroy]
 
   def index
-    @businesses = current_account.businesses
+    @businesses = current_account.businesses.ordered
   end
 
   def show
-    
+    @accordion_businesses = current_account.businesses.ordered - [@business]
   end
 
   def new

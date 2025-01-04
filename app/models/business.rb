@@ -1,8 +1,11 @@
 class Business < ApplicationRecord
   validates :name, presence: true
-  validates :description, length: { maximum: 200 }
+  validates :description, length: { maximum: 200
+ }
   
   belongs_to :account
+
+  scope :ordered, -> { order(id: :desc) }
   
   CURRENCIES = {
     'Nigerian Naira' => '₦',

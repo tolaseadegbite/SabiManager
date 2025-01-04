@@ -6,7 +6,9 @@ class ApplicationController < ActionController::Base
   private
 
   def set_layout
-    if rodauth.logged_in?
+    if business_related_view?
+      "business" # Layout for business-related views
+    elsif rodauth.logged_in?
       "application" # Layout for logged-in users
     elsif authentication_page?
       "authentication" # Layout for authentication-related pages
@@ -14,6 +16,27 @@ class ApplicationController < ActionController::Base
       "unauthenticated" # Layout for general pages (homepage, pricing, etc.)
     end
   end
+
+  def business_related_view?
+    params[:business_id].present? || controller_with_business_association? || business_show_page?
+  end
+  
+  def controller_with_business_association?
+    %w[customers products orders].include?(controller_name)
+  end
+  
+  def business_show_page?
+    controller_name == 'businesses' && action_name == 'show'
+  end
+
+
+
+
+  
+
+  #######################################################################################################################
+  # rodauth
+  #######################################################################################################################
 
   def authentication_page?
     # Check if the current path matches Rodauth routes
