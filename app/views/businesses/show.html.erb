@@ -1,4 +1,62 @@
 <% provide(:title, sanitize(@business.name)) %>
 <%= render 'businesses/components/sidebar' %>
 
+<div class="p-4 lg:ml-19.5rem mt-4.4rem bg-white rounded-lg h-[calc(100vh-5.5rem)] m-4 md">
+    <div class="flex gap-2 items-center justify-between">
+        <div>
+            <h1 class="font-bold text-xl">Profile</h1>
+            <p>Business profile and information</p>
+        </div>
 
+        <%= link_to edit_business_path(@business), class: "flex whitespace-nowrap items-center px-3 py-2 text-sm font-medium text-center text-white bg-gray-900 rounded-lg hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-300 dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800 gap-1", data: {action: "click->dialog#open", turbo_frame: :modal} do %>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10" />
+            </svg>
+
+            Edit business
+            
+        <% end %>
+    </div>
+
+    <div class="mt-5 border rounded-lg">
+        <ul>
+            <li>
+                <div class="flex gap-20 border-b p-4">
+                    <span class="font-semibold w-10">
+                        Name
+                    </span>
+
+                    <span>
+                        <%= @business.name %>
+                    </span>
+                </div>
+            </li>
+            <li>
+                <div class="flex gap-20 border-b p-4">
+                    <span class="font-semibold w-10">
+                        Description
+                    </span>
+
+                    <span>
+                        <% if @business.description.present? %>
+                            <%= @business.description %>
+                        <% else %>
+                            <p>Nil</p>
+                        <% end %>
+                    </span>
+                </div>
+            </li>
+            <li>
+                <div class="flex gap-20 p-4">
+                    <span class="font-semibold w-10">
+                        Currency
+                    </span>
+
+                    <span>
+                        <%= @business.currency %> (<%= @business.currency_symbol %>)
+                    </span>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
