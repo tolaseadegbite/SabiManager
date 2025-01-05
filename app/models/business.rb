@@ -5,6 +5,8 @@ class Business < ApplicationRecord
   
   belongs_to :account
 
+  has_many :customers, dependent: :destroy
+
   scope :ordered, -> { order(id: :desc) }
   
   CURRENCIES = {

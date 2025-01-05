@@ -5,4 +5,5 @@ class Account < ApplicationRecord
   has_one :profile
 
   has_many :businesses, dependent: :destroy
+  has_many :customers, dependent: :destroy
 end
