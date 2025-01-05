@@ -1,6 +1,6 @@
 class BusinessesController < ApplicationController
   before_action :authenticate!
-  before_action :find_business, only: %w[show edit update destroy]
+  before_action :find_business, only: %w[show edit update destroy dashboard]
 
   def index
     @businesses = current_account.businesses.ordered
@@ -43,6 +43,10 @@ class BusinessesController < ApplicationController
 
   def destroy
     
+  end
+
+  def dashboard
+    @accordion_businesses = current_account.businesses.ordered - [@business]
   end
 
   private

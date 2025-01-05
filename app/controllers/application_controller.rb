@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
   end
 
   def business_related_view?
-    params[:business_id].present? || controller_with_business_association? || business_show_page?
+    params[:business_id].present? || controller_with_business_association? || business_show_page? || business_dashboard_page?
   end
   
   def controller_with_business_association?
@@ -27,6 +27,10 @@ class ApplicationController < ActionController::Base
   
   def business_show_page?
     controller_name == 'businesses' && action_name == 'show'
+  end
+  
+  def business_dashboard_page?
+    controller_name == 'businesses' && action_name == 'dashboard'
   end
 
 

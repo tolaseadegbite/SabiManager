@@ -10,7 +10,11 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "businesses#index"
 
-  resources :businesses
+  resources :businesses do
+    member do
+      get 'dashboard'
+    end
+  end
 
   get "/settings/account", to: "settings#index", as: :settings
   get "/settings/account_information", to: "settings#account_information", as: :account_information_settings
