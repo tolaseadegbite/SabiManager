@@ -8,6 +8,8 @@ class Customer < ApplicationRecord
   belongs_to :business
   belongs_to :account
 
+  scope :ordered, -> { order(id: :asc) }
+
   private
 
     # Converts email to all lowercase

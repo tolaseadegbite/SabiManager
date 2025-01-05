@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_01_03_144252) do
+ActiveRecord::Schema[8.0].define(version: 2025_01_05_155447) do
   create_table "account_login_change_keys", force: :cascade do |t|
     t.string "key", null: false
     t.string "login", null: false
@@ -90,6 +90,21 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_03_144252) do
     t.index ["account_id"], name: "index_businesses_on_account_id"
   end
 
+  create_table "customers", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.string "phone_number"
+    t.decimal "amount_spent"
+    t.integer "business_id", null: false
+    t.integer "account_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["account_id"], name: "index_customers_on_account_id"
+    t.index ["business_id"], name: "index_customers_on_business_id"
+    t.index ["email"], name: "index_customers_on_email", unique: true
+    t.index ["phone_number"], name: "index_customers_on_phone_number", unique: true
+  end
+
   create_table "profiles", force: :cascade do |t|
     t.string "name"
     t.integer "account_id", null: false
@@ -105,5 +120,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_03_144252) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "businesses", "accounts"
+  add_foreign_key "customers", "accounts"
+  add_foreign_key "customers", "businesses"
   add_foreign_key "profiles", "accounts"
 end

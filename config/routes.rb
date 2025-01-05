@@ -14,6 +14,8 @@ Rails.application.routes.draw do
     member do
       get 'dashboard'
     end
+    
+    resources :customers
   end
 
   get "/settings/account", to: "settings#index", as: :settings
