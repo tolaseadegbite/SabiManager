@@ -1,0 +1,25 @@
+<div class="px-6 py-5">
+    <%= form_with(model: [business, customer], data: { turbo: false }, class: "w-full") do |form| %>
+        <div class="mb-6">
+            <%= form.label :name, class: "block text-sm font-semibold" %>
+            <%= form.text_field :name, class: "focus:ring-black/80 focus:border-black/80 mt-2 text-sm w-full px-3 py-2 border rounded-md dark:bg-gray-900 dark:text-gray-100 dark:focus:bg-gray-800", required: true %>
+        </div>
+
+        <div class="mb-6">
+            <%= form.label :email, class: "block text-sm font-semibold" %>
+            <%= form.email_field :email, class: "focus:ring-black/80 focus:border-black/80 mt-2 text-sm w-full px-3 py-2 border rounded-md dark:bg-gray-900 dark:text-gray-100 dark:focus:bg-gray-800" %>
+        </div>
+
+        <div class="mb-6">
+            <%= form.label :phone_number, class: "block text-sm font-semibold" %>
+            <%= form.text_field :phone_number, class: "focus:ring-black/80 focus:border-black/80 mt-2 text-sm w-full px-3 py-2 border rounded-md dark:bg-gray-900 dark:text-gray-100 dark:focus:bg-gray-800", required: true %>
+        </div>
+
+        <div class="mb-6">
+            <%= form.label :address, class: "block text-sm font-semibold" %>
+            <%= form.text_field :address, class: "focus:ring-black/80 focus:border-black/80 mt-2 text-sm w-full px-3 py-2 border rounded-md dark:bg-gray-900 dark:text-gray-100 dark:focus:bg-gray-800", required: true %>
+        </div>
+
+        <%= form.submit "Save", class: "w-full px-8 py-3 cursor-pointer font-semibold text-sm rounded-lg text-white bg-black/90 hover:bg-black/80 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black/60 dark:bg-emerald-400 dark:hover:bg-emerald-500 dark:text-gray-900 dark:focus:ring-emerald-400 dark:focus:ring-offset-current" %>
+    <% end %>
+</div>

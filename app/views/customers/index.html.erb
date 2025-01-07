@@ -1,0 +1,21 @@
+<% provide(:title, "Customers - #{@business.name}") %>
+
+<%= render 'businesses/components/sidebar' %>
+
+<div class="p-4 lg:ml-19.5rem mt-4.4rem bg-white rounded-lg h-[calc(100vh-5.5rem)] m-4 md">
+
+    <div class="flex gap-2 items-center justify-between">
+        
+        <h1 class="font-bold text-xl mb-2">Customers</h1>
+
+        <%= link_to new_business_customer_path(@business), class: "inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-gray-900 rounded-lg hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-300 dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800 gap-1", data: {action: "click->dialog#open", turbo_frame: :modal} do %>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+            </svg>
+
+            Add new customer
+        <% end %>
+    </div>
+    
+    ...
+</div>

@@ -5,6 +5,7 @@ class CustomersController < ApplicationController
 
   def index
     @customers = @business.customers.ordered
+    @accordion_businesses = current_account.businesses.ordered - [@business]
   end
 
   def show
@@ -21,8 +22,8 @@ class CustomersController < ApplicationController
 
     if @customer.save
       respond_to do |format|
-        format.html { redirect_to business_customer_path(@business), notice: "Customer created successfully" }
-        # format.turbo_stream { flash.now[:notice] = 'Podcast created successfully' }
+        format.html { redirect_to business_customers_path(@business), notice: "Customer created successfully" }
+        # format.turbo_stream { flash.now[:notice] = 'Customer created successfully' }
       end
     else
       render :new, status: :unprocessable_entity
@@ -54,7 +55,7 @@ class CustomersController < ApplicationController
   private
 
     def customer_params
-      params.expect(:customer [:name, :phone_number, :email])
+      params.require(:customer).permit(:name, :phone_number, :email, :address)
     end
 
     def find_business
