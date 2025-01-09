@@ -3,11 +3,6 @@ Rails.application.routes.draw do
 
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
 
-  # Render dynamic PWA files from app/views/pwa/* (remember to link manifest in application.html.erb)
-  # get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
-  # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
-
-  # Defines the root path route ("/")
   root "businesses#index"
 
   resources :businesses do
@@ -23,8 +18,7 @@ Rails.application.routes.draw do
   get "/settings/password", to: "settings#password", as: :password_settings
   get "/settings/email", to: "settings#email", as: :email_settings
   get "/settings/name", to: "settings#name", as: :name_settings
-  patch "/settings/name", to: "settings#update_name", as: :update_name_settings
   get "/settings/country", to: "settings#country", as: :country_settings
-  patch "/settings/country", to: "settings#update_country", as: :update_country_settings
+  patch "/settings/profile", to: "settings#update_profile", as: :update_profile_settings
   get "/settings/deactivate_account", to: "settings#deactivate_account", as: :deactivate_account_settings
 end
