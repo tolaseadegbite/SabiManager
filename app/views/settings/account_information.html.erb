@@ -63,7 +63,11 @@
 
                 <div>
                     <p>Country</p>
-                    <p class="text-sm text-gray-600"><%= current_account.profile.country_label %></p>
+                    <% if current_account.profile.country.present? %>
+                        <p class="text-sm text-gray-600"><%= current_account.profile.country_label %></p>
+                    <% else %>
+                        <p class="text-sm text-gray-600">Nil</p>
+                    <% end %>
                 </div>
 
                 <span>

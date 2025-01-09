@@ -76,3 +76,5 @@ gem "tilt", "~> 2.4"
 gem "active_storage_validations", "~> 1.4"
 
 gem 'city-state'
+
+gem 'faker'
