@@ -24,5 +24,7 @@ Rails.application.routes.draw do
   get "/settings/email", to: "settings#email", as: :email_settings
   get "/settings/name", to: "settings#name", as: :name_settings
   patch "/settings/name", to: "settings#update_name", as: :update_name_settings
+  get "/settings/country", to: "settings#country", as: :country_settings
+  patch "/settings/country", to: "settings#update_country", as: :update_country_settings
   get "/settings/deactivate_account", to: "settings#deactivate_account", as: :deactivate_account_settings
 end

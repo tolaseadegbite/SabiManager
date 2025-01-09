@@ -59,11 +59,11 @@
             </li>
 
             <li class="">
-                <%= link_to account_information_settings_path, class: "inline-flex justify-between items-center w-full hover:bg-gray-100 px-6 p-2" do %>
+                <%= link_to country_settings_path, class: "inline-flex justify-between items-center w-full hover:bg-gray-100 px-6 p-2" do %>
 
                 <div>
-                    <p>Verified</p>
-                    <p class="text-sm text-gray-600">Email address verified.</p>
+                    <p>Country</p>
+                    <p class="text-sm text-gray-600"><%= current_account.profile.country_label %></p>
                 </div>
 
                 <span>

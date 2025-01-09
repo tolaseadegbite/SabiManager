@@ -1,14 +1,24 @@
 class Customer < ApplicationRecord
-  validates :name, presence: true
+  validates :name, :phone_number, presence: true
+  validates :phone_number, uniqueness: { scope: :business_id, message: "is registered to a customer"}
+
 
   before_save :downcase_email
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
-  validates :email, presence: true, length: { maximum: 255 }, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
+  validates :email, presence: true, length: { maximum: 255 }, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false, scope: :business_id, message: "is already registered to a customer" }
 
   belongs_to :business
   belongs_to :account
 
   scope :ordered, -> { order(id: :asc) }
+
+  def countries
+    CS.countries.with_indifferent_access
+  end
+
+  def country_label
+    countries[country]
+  end
 
   private
 

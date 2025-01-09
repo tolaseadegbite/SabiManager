@@ -3,6 +3,14 @@ class Profile < ApplicationRecord
 
   belongs_to :account
 
+  def countries
+    CS.countries.with_indifferent_access
+  end
+
+  def country_label
+    countries[country]
+  end
+
   has_one_attached :avatar do |attachable|
     attachable.variant :display, resize_to_limit: [200, 200]
   end

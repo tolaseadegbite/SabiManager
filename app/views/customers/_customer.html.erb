@@ -1,0 +1,39 @@
+<tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 text-gray-900">
+    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white text">
+        <%= link_to customer.name, business_customer_path(@business, customer) %>
+    </th>
+    <td class="px-6 py-4">
+        <%= link_to customer.email, business_customer_path(@business, customer) %>
+    </td>
+    <td class="px-6 py-4">
+        <%= link_to customer.phone_number, business_customer_path(@business, customer) %>
+    </td>
+    <td class="px-6 py-4">
+        <% if customer.address.present? %>
+            <%= link_to customer.address.truncate(20), business_customer_path(@business, customer), 
+            data: { tooltip_target: "tooltip-customer-address-#{customer.id}", 
+                    tooltip_placement: "top" } %>
+        <% else %>
+            Nil
+        <% end %>
+    </td>
+    <td class="px-6 py-4">
+        <% if customer.country.present? %>
+            <%= link_to customer.country, business_customer_path(@business, customer) %>
+        <% else %>
+            Nil
+        <% end %>
+    </td>
+    <td class="px-6 py-4">
+        <%= link_to business_customer_path(@business, customer) do %>
+            <%= @business.currency_symbol %> <%= number_to_currency(10000, unit: '') %>
+        <% end %>
+    </td>
+</tr>
+
+<!-- Tooltip HTML -->
+<div id="tooltip-customer-address-<%= customer.id %>" role="tooltip" 
+     class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+    <%= customer.address %>
+    <div class="tooltip-arrow" data-popper-arrow></div>
+</div>

@@ -55,14 +55,14 @@ class CustomersController < ApplicationController
   private
 
     def customer_params
-      params.require(:customer).permit(:name, :phone_number, :email, :address)
+      params.require(:customer).permit(:name, :phone_number, :email, :address, :country)
     end
 
     def find_business
-      @business = current_account.businesses.find(params[:business_id])
+      @business = Business.find(params[:business_id])
     end
 
     def find_customer
-      @customer = @business.customers.find(params[:id])
+      @customer = Customer.find(params[:id])
     end
 end

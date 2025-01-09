@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_01_05_163328) do
+ActiveRecord::Schema[8.0].define(version: 2025_01_08_015839) do
   create_table "account_login_change_keys", force: :cascade do |t|
     t.string "key", null: false
     t.string "login", null: false
@@ -100,10 +100,11 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_05_163328) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "address"
+    t.string "country"
     t.index ["account_id"], name: "index_customers_on_account_id"
     t.index ["business_id"], name: "index_customers_on_business_id"
-    t.index ["email"], name: "index_customers_on_email", unique: true
-    t.index ["phone_number"], name: "index_customers_on_phone_number", unique: true
+    t.index ["email", "business_id"], name: "index_customers_on_email_and_business_id", unique: true
+    t.index ["phone_number", "business_id"], name: "index_customers_on_phone_number_and_business_id", unique: true
   end
 
   create_table "profiles", force: :cascade do |t|
@@ -111,6 +112,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_05_163328) do
     t.integer "account_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "country"
     t.index ["account_id"], name: "index_profiles_on_account_id"
   end
 
