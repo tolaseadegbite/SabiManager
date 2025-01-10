@@ -6,4 +6,5 @@ class Account < ApplicationRecord
 
   has_many :businesses, dependent: :destroy
   has_many :customers, dependent: :destroy
+  has_many :product_categories, dependent: :destroy
 end

@@ -1,11 +1,11 @@
 class Business < ApplicationRecord
   validates :name, presence: true
-  validates :description, length: { maximum: 200
- }
+  validates :description, length: { maximum: 200 }
   
   belongs_to :account
 
   has_many :customers, dependent: :destroy
+  has_many :product_categories, dependent: :destroy
 
   scope :ordered, -> { order(id: :desc) }
   

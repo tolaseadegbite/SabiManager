@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_01_08_015839) do
+ActiveRecord::Schema[8.0].define(version: 2025_01_10_212019) do
   create_table "account_login_change_keys", force: :cascade do |t|
     t.string "key", null: false
     t.string "login", null: false
@@ -107,6 +107,18 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_08_015839) do
     t.index ["phone_number", "business_id"], name: "index_customers_on_phone_number_and_business_id", unique: true
   end
 
+  create_table "product_categories", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "description"
+    t.integer "products_count", default: 0
+    t.integer "account_id", null: false
+    t.integer "business_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["account_id"], name: "index_product_categories_on_account_id"
+    t.index ["business_id"], name: "index_product_categories_on_business_id"
+  end
+
   create_table "profiles", force: :cascade do |t|
     t.string "name"
     t.integer "account_id", null: false
@@ -125,5 +137,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_08_015839) do
   add_foreign_key "businesses", "accounts"
   add_foreign_key "customers", "accounts"
   add_foreign_key "customers", "businesses"
+  add_foreign_key "product_categories", "accounts"
+  add_foreign_key "product_categories", "businesses"
   add_foreign_key "profiles", "accounts"
 end

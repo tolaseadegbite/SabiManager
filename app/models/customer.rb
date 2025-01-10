@@ -10,7 +10,7 @@ class Customer < ApplicationRecord
   belongs_to :business
   belongs_to :account
 
-  scope :ordered, -> { order(id: :asc) }
+  scope :ordered, -> { order(id: :desc) }
 
   def countries
     CS.countries.with_indifferent_access

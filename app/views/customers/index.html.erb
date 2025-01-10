@@ -2,13 +2,16 @@
 
 <%= render 'businesses/components/sidebar' %>
 
-<div class="p-4 lg:ml-19.5rem mt-4.4rem bg-white rounded-lg m-4 border">
+<div class="p-4 lg:ml-19.5rem mt-4.4rem bg-white rounded-lg m-3 border">
 
     <div class="flex gap-2 items-center justify-between mb-3">
-        <h1 class="font-bold text-xl mb-2">Customers <span class="bg-gray-100 text-gray-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300"><%= @total_customers %></span></h1>
+        <div class="flex gap-2 items-center">
+            <%= link_to sanitize("&larr;"), dashboard_business_path(@business) %>
+            <h1 class="font-bold text-xl">Customers <span class="bg-gray-100 text-gray-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300"><%= @total_customers %></span></h1>
+        </div>
 
         <%= link_to new_business_customer_path(@business), class: "inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-gray-900 rounded-lg hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-300 dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800 gap-1", data: {action: "click->dialog#open", turbo_frame: :modal} do %>
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
             </svg>
 
