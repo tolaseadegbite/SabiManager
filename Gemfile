@@ -78,3 +78,5 @@ gem "active_storage_validations", "~> 1.4"
 gem 'city-state'
 
 gem 'faker'
+
+gem "pagy", "~> 9.3"

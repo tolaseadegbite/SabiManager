@@ -5,7 +5,9 @@ class CustomersController < ApplicationController
 
   def index
     @customers = @business.customers.ordered
+    @total_customers = @customers.count # Get the total count
     @accordion_businesses = current_account.businesses.ordered - [@business]
+    @pagy, @customers = pagy(@customers, limit: 30)
   end
 
   def show
