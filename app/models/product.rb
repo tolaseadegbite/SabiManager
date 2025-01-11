@@ -1,6 +1,6 @@
 class Product < ApplicationRecord
-  validates :name, :product_category_id, presence: true, length: { min: 5, maximum: 200 }
-  validates :description, length: { maximum: 200 }
+  validates :name, :description, presence: true, length: { minimum: 5, maximum: 200 }
+  validates :product_category, presence: true
 
   belongs_to :business, counter_cache: :products_count
   belongs_to :product_category, counter_cache: :products_count

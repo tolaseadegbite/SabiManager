@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     
     resources :customers
     resources :product_categories
+    resources :products
   end
 
   get "/settings/account", to: "settings#index", as: :settings
