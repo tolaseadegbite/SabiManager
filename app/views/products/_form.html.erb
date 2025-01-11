@@ -11,7 +11,7 @@
 
     <div>
       <%= form.label "Description (optional)", class: "block text-sm font-semibold" %>
-      <%= form.text_area :description, class: "focus:ring-black/80 focus:border-black/80 mt-2 text-sm w-full px-3 py-2 border rounded-md dark:bg-gray-900 dark:text-gray-100 dark:focus:bg-gray-800 border-gray-300 dark:border-gray-700 dark:focus:border-emerald-400 dark:focus:ring-emerald-400", required: true %>
+      <%= form.text_area :description, class: "h-36 focus:ring-black/80 focus:border-black/80 mt-2 text-sm w-full px-3 py-2 border rounded-md dark:bg-gray-900 dark:text-gray-100 dark:focus:bg-gray-800 border-gray-300 dark:border-gray-700 dark:focus:border-emerald-400 dark:focus:ring-emerald-400", required: true %>
     </div>
 
     <div>
@@ -19,20 +19,32 @@
       <%= form.select :product_category_id, ProductCategory.all.pluck(:name, :id), { include_blank: "Select category" }, class: "mt-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 cursor-pointer", required: true %>
     </div>
 
-    <div class="grid md:grid-cols-3 md:gap-6 space-y-6">
+    <div class="grid md:grid-cols-3 md:gap-6" data-controller="price-toggle" data-price-toggle-target="gridContainer">
       <div class="field items-center">
         <div class="flex items-center">
-          <%= form.check_box :negotiable, class: "h-4 w-4 text-black focus:ring-black/80 border-gray-300 rounded dark:bg-gray-900 dark:border-gray-700 dark:focus:ring-black/80 cursor-pointer" %>
+          <%= form.check_box :negotiable, 
+                            class: "h-4 w-4 text-black focus:ring-black/80 border-gray-300 rounded dark:bg-gray-900 dark:border-gray-700 dark:focus:ring-black/80 cursor-pointer", 
+                            data: { action: "change->price-toggle#toggleFields" } %>
           <%= form.label :negotiable, "Negotiable?", class: "ml-2 block text-sm font-semibold cursor-pointer" %>
         </div>
       </div>
 
-      <div class="field">
-        <%= form.label :price, class: "block text-sm font-semibold" %>
+      <div class="field mt-6 md:mt-0" data-price-toggle-target="fixedPrice">
+        <%= form.label :fixed_price, class: "block text-sm font-semibold" %>
         <%= form.text_field :fixed_price, class: "focus:ring-black/80 focus:border-black/80 mt-2 text-sm w-full px-3 py-2 border rounded-md dark:bg-gray-900 dark:text-gray-100 dark:focus:bg-gray-800 border-gray-300 dark:border-gray-700 dark:focus:border-emerald-400 dark:focus:ring-emerald-400", required: true %>
       </div>
-      
-      <div class="field">
+
+      <div class="field hidden mt-6 md:mt-0" data-price-toggle-target="minPrice">
+        <%= form.label :min_price, class: "block text-sm font-semibold" %>
+        <%= form.text_field :min_price, class: "focus:ring-black/80 focus:border-black/80 mt-2 text-sm w-full px-3 py-2 border rounded-md dark:bg-gray-900 dark:text-gray-100 dark:focus:bg-gray-800 border-gray-300 dark:border-gray-700 dark:focus:border-emerald-400 dark:focus:ring-emerald-400" %>
+      </div>
+
+      <div class="field hidden mt-6 md:mt-0" data-price-toggle-target="maxPrice">
+        <%= form.label :max_price, class: "block text-sm font-semibold" %>
+        <%= form.text_field :max_price, class: "focus:ring-black/80 focus:border-black/80 mt-2 text-sm w-full px-3 py-2 border rounded-md dark:bg-gray-900 dark:text-gray-100 dark:focus:bg-gray-800 border-gray-300 dark:border-gray-700 dark:focus:border-emerald-400 dark:focus:ring-emerald-400" %>
+      </div>
+
+      <div class="field mt-6 md:mt-0" data-price-toggle-target="stockQuantity">
         <%= form.label :stock_quantity, class: "block text-sm font-semibold" %>
         <%= form.text_field :stock_quantity, class: "focus:ring-black/80 focus:border-black/80 mt-2 text-sm w-full px-3 py-2 border rounded-md dark:bg-gray-900 dark:text-gray-100 dark:focus:bg-gray-800 border-gray-300 dark:border-gray-700 dark:focus:border-emerald-400 dark:focus:ring-emerald-400", required: true %>
       </div>

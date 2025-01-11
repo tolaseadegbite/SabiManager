@@ -24,7 +24,7 @@ class ProductsController < ApplicationController
 
     if @product.save
       respond_to do |format|
-        format.html { redirect_to business_products_path(@business), notice: "product created successfully" }
+        format.html { redirect_to business_products_path(@business), notice: "Product created successfully" }
         # format.turbo_stream { flash.now[:notice] = 'product created successfully' }
       end
     else
