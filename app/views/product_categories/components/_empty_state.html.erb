@@ -1,0 +1,15 @@
+<div class="empty-state border border-dashed border-gray-900 py-5 flex items-center mx-auto text-center w-full md:w-1/2">
+    <div class="mx-auto space-y-3">
+        <p class="empty-state__text">
+            You don't have any quotes yet!
+        </p>
+
+        <%= link_to new_business_product_category_path(@business), class: "inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-gray-900 rounded-lg hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-300 dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800 gap-1", data: {action: "click->dialog#open", turbo_frame: :modal} do %>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+            </svg>
+
+            Add new category
+        <% end %>
+    </div>
+</div>

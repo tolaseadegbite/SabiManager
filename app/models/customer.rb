@@ -7,8 +7,8 @@ class Customer < ApplicationRecord
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
   validates :email, presence: true, length: { maximum: 255 }, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false, scope: :business_id, message: "is already registered to a customer" }
 
-  belongs_to :business
-  belongs_to :account
+  belongs_to :business, counter_cache: :customers_count
+  belongs_to :account, counter_cache: :customers_count
 
   scope :ordered, -> { order(id: :desc) }
 

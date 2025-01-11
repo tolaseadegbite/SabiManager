@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_01_10_212019) do
+ActiveRecord::Schema[8.0].define(version: 2025_01_10_213925) do
   create_table "account_login_change_keys", force: :cascade do |t|
     t.string "key", null: false
     t.string "login", null: false
@@ -38,6 +38,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_10_212019) do
     t.integer "status", default: 1, null: false
     t.string "email", null: false
     t.string "password_hash"
+    t.integer "product_categories_count", default: 0
+    t.integer "customers_count", default: 0
     t.index ["email"], name: "index_accounts_on_email", unique: true, where: "status IN (1, 2)"
   end
 
@@ -87,6 +89,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_10_212019) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.decimal "tax_rate", precision: 5, scale: 2, default: "0.0"
+    t.integer "product_categories_count", default: 0
+    t.integer "customers_count", default: 0
     t.index ["account_id"], name: "index_businesses_on_account_id"
   end
 
@@ -110,7 +114,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_10_212019) do
   create_table "product_categories", force: :cascade do |t|
     t.string "name", null: false
     t.text "description"
-    t.integer "products_count", default: 0
     t.integer "account_id", null: false
     t.integer "business_id", null: false
     t.datetime "created_at", null: false

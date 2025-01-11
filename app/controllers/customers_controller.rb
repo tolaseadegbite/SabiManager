@@ -6,7 +6,7 @@ class CustomersController < ApplicationController
 
   def index
     @customers = @business.customers.ordered
-    @total_customers = @customers.size
+    @total_customers = @business.customers_count
     @pagy, @customers = pagy(@customers, limit: 30)
   end
 
