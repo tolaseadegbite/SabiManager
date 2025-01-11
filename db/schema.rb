@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_01_10_213925) do
+ActiveRecord::Schema[8.0].define(version: 2025_01_11_090110) do
   create_table "account_login_change_keys", force: :cascade do |t|
     t.string "key", null: false
     t.string "login", null: false
@@ -122,6 +122,24 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_10_213925) do
     t.index ["business_id"], name: "index_product_categories_on_business_id"
   end
 
+  create_table "products", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "description"
+    t.boolean "negotiable", default: false
+    t.integer "stock_quantity", default: 0
+    t.decimal "fixed_price", precision: 5, scale: 2, default: "0.0"
+    t.decimal "min_price", precision: 5, scale: 2, default: "0.0"
+    t.decimal "max_price", precision: 5, scale: 2, default: "0.0"
+    t.integer "business_id", null: false
+    t.integer "product_category_id", null: false
+    t.integer "account_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["account_id"], name: "index_products_on_account_id"
+    t.index ["business_id"], name: "index_products_on_business_id"
+    t.index ["product_category_id"], name: "index_products_on_product_category_id"
+  end
+
   create_table "profiles", force: :cascade do |t|
     t.string "name"
     t.integer "account_id", null: false
@@ -142,5 +160,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_10_213925) do
   add_foreign_key "customers", "businesses"
   add_foreign_key "product_categories", "accounts"
   add_foreign_key "product_categories", "businesses"
+  add_foreign_key "products", "accounts"
+  add_foreign_key "products", "businesses"
+  add_foreign_key "products", "product_categories"
   add_foreign_key "profiles", "accounts"
 end
