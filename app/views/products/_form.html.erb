@@ -19,12 +19,17 @@
       <%= form.select :product_category_id, ProductCategory.all.pluck(:name, :id), { include_blank: "Select category" }, class: "mt-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 cursor-pointer", required: true %>
     </div>
 
-    <div class="grid md:grid-cols-2 md:gap-6">
+    <div class="grid md:grid-cols-3 md:gap-6 space-y-6">
       <div class="field items-center">
         <div class="flex items-center">
           <%= form.check_box :negotiable, class: "h-4 w-4 text-black focus:ring-black/80 border-gray-300 rounded dark:bg-gray-900 dark:border-gray-700 dark:focus:ring-black/80 cursor-pointer" %>
           <%= form.label :negotiable, "Negotiable?", class: "ml-2 block text-sm font-semibold cursor-pointer" %>
         </div>
+      </div>
+
+      <div class="field">
+        <%= form.label :price, class: "block text-sm font-semibold" %>
+        <%= form.text_field :fixed_price, class: "focus:ring-black/80 focus:border-black/80 mt-2 text-sm w-full px-3 py-2 border rounded-md dark:bg-gray-900 dark:text-gray-100 dark:focus:bg-gray-800 border-gray-300 dark:border-gray-700 dark:focus:border-emerald-400 dark:focus:ring-emerald-400", required: true %>
       </div>
       
       <div class="field">
@@ -33,11 +38,24 @@
       </div>
     </div>
 
-    <div>
-      <%= form.label "Product image", class: "block text-sm font-semibold" %>
-      <%= form.file_field "product image", class: "mt-2 block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" %>
+    <div class="flex items-center justify-center w-full">
+      <label class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-gray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500">
+        <div class="flex flex-col items-center justify-center pt-5 pb-6">
+          <svg class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
+          </svg>
+          <p class="mb-2 text-sm text-gray-500 dark:text-gray-400">
+            <span class="font-semibold">Click to upload</span> or drag and drop product image
+          </p>
+          <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
+        </div>
+        <%= form.file_field "image", class: "hidden", id: "dropzone-file" %>
+      </label>
+    </div> 
+
+    <div class="flex justify-end">
+      <%= form.submit "Save", class: "px-8 py-3 cursor-pointer font-semibold text-sm rounded-lg text-white bg-black/90 hover:bg-black/80 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black/60 dark:bg-emerald-400 dark:hover:bg-emerald-500 dark:text-gray-900 dark:focus:ring-emerald-400 dark:focus:ring-offset-current" %>
     </div>
 
-    <%= form.submit "Save", class: "px-8 py-3 cursor-pointer font-semibold text-sm rounded-lg text-white bg-black/90 hover:bg-black/80 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black/60 dark:bg-emerald-400 dark:hover:bg-emerald-500 dark:text-gray-900 dark:focus:ring-emerald-400 dark:focus:ring-offset-current" %>
   <% end %>
 </div>
