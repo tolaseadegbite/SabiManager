@@ -1,0 +1,8 @@
+<div class="mt-72">
+    <% if @product.negotiable? %>
+        <%= @product.min_price %>
+        <%= @product.max_price %>
+    <% else %>
+        <%= @product.fixed_price %>
+    <% end %>
+</div>

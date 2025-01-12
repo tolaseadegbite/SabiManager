@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_01_11_110611) do
+ActiveRecord::Schema[8.0].define(version: 2025_01_11_234250) do
   create_table "account_login_change_keys", force: :cascade do |t|
     t.string "key", null: false
     t.string "login", null: false
@@ -130,9 +130,9 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_11_110611) do
     t.text "description"
     t.boolean "negotiable", default: false
     t.integer "stock_quantity", default: 0
-    t.decimal "fixed_price", precision: 5, scale: 2, default: "0.0"
-    t.decimal "min_price", precision: 5, scale: 2, default: "0.0"
-    t.decimal "max_price", precision: 5, scale: 2, default: "0.0"
+    t.decimal "fixed_price", precision: 5, scale: 2
+    t.decimal "min_price", precision: 5, scale: 2
+    t.decimal "max_price", precision: 5, scale: 2
     t.integer "business_id", null: false
     t.integer "product_category_id", null: false
     t.integer "account_id", null: false
