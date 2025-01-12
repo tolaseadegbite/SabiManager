@@ -39,8 +39,12 @@
             </li>
         </ol>
     </nav>
-    
-    <h1 class="font-semibold text-xl sm:text-xl md:text-xl p-3">Edit product</h1>
+
+    <div class="flex gap-2 items-center mb-2">
+        <%= link_to sanitize("&larr;"), business_products_path(@business) %>
+        <h1 class="font-semibold text-xl sm:text-xl md:text-xl p-3">Edit product</h1>
+    </div>
+
     <%= render 'form', business: @business, product: @product %>
     
 </div>
