@@ -1,5 +1,5 @@
 <div class="px-3">
-  <%= form_with(model: [business, product], data: { turbo: false }, class: "w-full space-y-6") do |form| %>
+  <%= form_with(model: [business, product], data: { turbo: true }, class: "w-full space-y-6") do |form| %>
 
     <!-- Render errors only if they exist -->
     <%= render 'layouts/errors', form: form %>
@@ -16,7 +16,16 @@
 
     <div>
       <%= form.label :category, class: "block text-sm font-semibold" %>
-      <%= form.select :product_category_id, ProductCategory.all.pluck(:name, :id), { include_blank: "Select category" }, class: "mt-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 cursor-pointer", required: true %>
+      <div class="flex items-center gap-2">
+        <%= form.select :product_category_id, ProductCategory.all.pluck(:name, :id), { include_blank: "Select category" }, class: "mt-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block w-full p-2.5 cursor-pointer", required: true, id: "product_category_select" %>
+        
+        <!-- New Category Button -->
+        <%= link_to new_business_product_category_path(@business), class: "mt-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-gray-500 dark:focus:border-gray-500 cursor-pointer", data: { turbo_frame: "modal", action: "modal#open" } do %>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+          </svg>
+        <% end %>
+      </div>
     </div>
 
     <div class="grid md:grid-cols-3 md:gap-6 space-y-6" data-controller="price-toggle" data-price-toggle-target="gridContainer">

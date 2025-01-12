@@ -37,7 +37,7 @@ p {
 }
 
 ::-webkit-scrollbar {
-  width: 12px;
+  width: 8px;
   background-color: #F5F5F5;
   /* Add padding to avoid overlap with rounded corners */
   padding-right: 2px; /* Adjust as needed */

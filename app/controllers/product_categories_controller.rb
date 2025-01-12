@@ -6,12 +6,13 @@ class ProductCategoriesController < ApplicationController
 
   def index
     @product_categories = @business.product_categories.ordered
-    @total_product_categories = @product_categories.size
     @pagy, @product_categories = pagy(@product_categories, limit: 30)
   end
 
   def show
-    
+    @total_products = @product_category.products_count
+    @products = @product_category.products.ordered
+    @pagy, @products = pagy(@products, limit: 30)
   end
 
   def new
@@ -25,7 +26,7 @@ class ProductCategoriesController < ApplicationController
     if @product_category.save
       respond_to do |format|
         format.html { redirect_to business_product_categories_path(@business), notice: "Product category created successfully" }
-        # format.turbo_stream { flash.now[:notice] = 'product_category created successfully' }
+        format.turbo_stream { flash.now[:notice] = 'product_category created successfully' }
       end
     else
       flash.now[:alert] = "Failed to create product category. Please check the errors below."
