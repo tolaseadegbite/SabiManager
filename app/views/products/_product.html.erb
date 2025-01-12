@@ -1,0 +1,35 @@
+<tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 text-gray-900">
+    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white text">
+        <%= link_to product.name, business_product_path(@business, product), data: { turbo_frame: "_top" } %>
+    </th>
+    <td class="px-6 py-4">
+        <%= link_to product.negotiable ? "Yes" : "No", business_product_path(@business, product), data: { turbo_frame: "_top" } %>
+    </td>
+
+    <% if product.negotiable? %>
+        <td class="px-6 py-4">
+            <%= link_to number_to_currency(product.min_price, unit: ''), business_product_path(@business, product), data: { turbo_frame: "_top" } %>
+        </td>
+        <td class="px-6 py-4">
+            <%= link_to number_to_currency(product.max_price, unit: ''), business_product_path(@business, product), data: { turbo_frame: "_top" } %>
+        </td>
+    <% else %>
+        <td class="px-6 py-4">
+            <%= link_to number_to_currency(product.fixed_price, unit: ''), business_product_path(@business, product), data: { turbo_frame: "_top" } %>
+        </td>
+        <td class="px-6 py-4">
+            <%= link_to number_to_currency(product.fixed_price, unit: ''), business_product_path(@business, product), data: { turbo_frame: "_top" } %>
+        </td>
+    <% end %>
+    <td class="px-6 py-4">
+        <%= link_to product.product_category.name, business_product_category_path(@business, product.product_category), data: { turbo_frame: "_top" } %>
+    </td>
+    <td class="px-6 py-4">
+        <%= link_to product.stock_quantity, business_product_path(@business, product), data: { turbo_frame: "_top" } %>
+    </td>
+    <td class="px-6 py-4">
+        <%= link_to business_product_path(@business, product), data: { turbo_frame: "_top" } do %>
+            250
+        <% end %>
+    </td>
+</tr>

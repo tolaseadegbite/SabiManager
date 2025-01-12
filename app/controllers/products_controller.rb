@@ -2,6 +2,7 @@ class ProductsController < ApplicationController
   before_action :authenticate!
   before_action :find_product, only: %w[show edit update destroy]
   before_action :find_business
+  before_action :find_category
   before_action :find_sidebar_businesses
 
   def index
@@ -72,6 +73,10 @@ class ProductsController < ApplicationController
 
   def find_business
     @business = Business.find(params[:business_id])
+  end
+
+  def find_category
+    @category = ProductCategory.find_by(id: params[:product_category_id])
   end
 
   def find_product

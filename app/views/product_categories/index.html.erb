@@ -2,7 +2,7 @@
 
 <%= render 'businesses/components/sidebar' %>
 
-<div class="p-4 lg:ml-19.5rem mt-4.4rem bg-white rounded-lg m-3 border">
+<div class="p-4 lg:ml-18.5rem mt-4.4rem bg-white rounded-lg m-3 border">
     
     <nav class="flex mb-5" aria-label="Breadcrumb">
         <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
@@ -64,7 +64,7 @@
                 <div class="p-4 space-y-3 bg-white border border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700">
                     <span><%= product_category.name %></span>
                     <div class="flex items-center justify-between">
-                        <h2 class="font-semibold text-2xl">210</h2>
+                        <h2 class="font-semibold text-2xl"><%= product_category.products_count %></h2>
                         <%= link_to 'show product', business_product_category_path(@business, product_category), class: "text-sm font-semibold" %>
                     </div>
                 </div>

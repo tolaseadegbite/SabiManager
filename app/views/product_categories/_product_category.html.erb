@@ -15,7 +15,7 @@
     </td>
     <td class="px-6 py-4">
         <%= link_to business_product_category_path(@business, product_category), data: { turbo_frame: "_top" } do %>
-            210
+            <%= product_category.products_count %>
         <% end %>
     </td>
     <td class="px-6 py-4 flex gap-5 items-center">

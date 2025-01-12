@@ -14,7 +14,7 @@ module.exports = {
         sans: ['Inter var', ...defaultTheme.fontFamily.sans],
       },
       spacing: {
-        '19.5rem': '19.5rem', 
+        '18.5rem': '18.5rem', 
         '4.4rem': '4.4rem', 
       },
     },
