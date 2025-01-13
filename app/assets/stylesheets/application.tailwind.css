@@ -67,7 +67,44 @@ p {
   label {
     @apply inline-block whitespace-nowrap bg-blue-200 rounded-lg px-3 py-0.5;
     input {
-      @apply bg-blue-100 border-none rounded-md;
+      @apply bg-gray-100 border-none rounded-md;
     }
   }
 }
+
+/* combobox */
+
+.hw-combobox, .hw-combobox__main__wrapper {
+  width: 100% !important; 
+  border: none !important;
+}
+
+.hw-combobox__main__wrapper {
+  padding: 0 !important;
+  font-size: .875rem !important; 
+}
+
+.hw-combobox__main__wrapper {
+  &:focus-within {
+    box-shadow: none !important;
+  }
+}
+
+.hw-combobox__option {
+  cursor: pointer !important;
+}
+
+.hw-combobox__input {
+  all: unset !important;
+}
+
+.hw-combobox__dialog__input {
+  border: 1px solid #d1d5db !important; 
+  border-radius: .375rem !important;
+  &:focus-within {
+    border-color: rgb(107 114 128) !important; /* focus:border-gray-500 */
+    --tw-ring-color: rgb(107 114 128) !important; /* focus:ring-gray-500 */
+  }
+}
+
+

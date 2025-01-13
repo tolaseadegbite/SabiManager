@@ -80,3 +80,5 @@ gem 'city-state'
 gem 'faker'
 
 gem "pagy", "~> 9.3"
+
+gem "hotwire_combobox", "~> 0.3.2"

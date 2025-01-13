@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  namespace :searches do
+    resource :product_categories, only: :show
+  end
+  
   get "up" => "rails/health#show", as: :rails_health_check
 
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?

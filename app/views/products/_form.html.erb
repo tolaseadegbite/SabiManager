@@ -15,9 +15,10 @@
     </div>
 
     <div>
-      <%= form.label :category, class: "block text-sm font-semibold" %>
+      <%= form.label :category, class: "block text-sm font-semibold mb-2" %>
       <div class="flex items-center gap-2">
-        <%= form.select :product_category_id, ProductCategory.all.pluck(:name, :id), { include_blank: "Select category" }, class: "mt-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block w-full p-2.5 cursor-pointer", required: true, id: "product_category_select" %>
+        <%#= form.select :product_category_id, ProductCategory.all.pluck(:name, :id), { include_blank: "Select category" }, class: "mt-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block w-full p-2.5 cursor-pointer", required: true, id: "product_category_select" %>
+        <%= form.combobox :product_category_id, searches_product_categories_path, placeholder: "Select an option", class: "focus:ring-black/80 focus:border-black/80 mt-2 text-sm w-full px-3 py-2 border rounded-md dark:bg-gray-900 dark:text-gray-100 dark:focus:bg-gray-800 border-gray-300 dark:border-gray-700 dark:focus:border-emerald-400 dark:focus:ring-emerald-400 w-full" %>
         
         <!-- New Category Button -->
         <%= link_to new_business_product_category_path(@business), class: "mt-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-gray-500 dark:focus:border-gray-500 cursor-pointer", data: { turbo_frame: "modal", action: "modal#open" } do %>
